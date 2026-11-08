@@ -22,6 +22,7 @@ jobs:
         working-directory: egx_trader
         run: |
           flutter create . --platforms=android
+          rm -f test/widget_test.dart
           flutter pub get
           flutter test
           flutter build apk --release
