@@ -17,14 +17,13 @@ jobs:
           channel: stable
           cache: true
       - name: Unzip project
-        run: unzip -q egx_trader.zip
+        run: unzip -q "egx_trader (1).zip"
       - name: Build
         working-directory: egx_trader
         run: |
           flutter create . --platforms=android
           rm -f test/widget_test.dart
           sed -i 's#<application#<uses-permission android:name="android.permission.INTERNET"/>\n    <application#' android/app/src/main/AndroidManifest.xml
-          grep -n INTERNET android/app/src/main/AndroidManifest.xml
           flutter pub get
           flutter test
           flutter build apk --release
