@@ -17,7 +17,10 @@ jobs:
           channel: stable
           cache: true
       - name: Unzip project
-        run: unzip -q "egx_trader (1).zip"
+        run: |
+          ZIP=$(ls egx_trader_v*.zip | sort -V | tail -1)
+          echo "Using $ZIP"
+          unzip -q "$ZIP"
       - name: Build
         working-directory: egx_trader
         run: |
